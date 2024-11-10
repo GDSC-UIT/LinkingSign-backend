@@ -6,13 +6,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"linkingsign/utils"
-	"log"
 	"net/http"
 	"os"
 
 	"github.com/cloudinary/cloudinary-go"
 	"github.com/cloudinary/cloudinary-go/api/uploader"
-	"github.com/joho/godotenv"
 )
 
 func UploadLocal(w http.ResponseWriter, r *http.Request) {
@@ -74,11 +72,11 @@ func UploadCloud(w http.ResponseWriter, r *http.Request) {
 
 	// Initialize Cloudinary configuration
 	// load .env file
-	errEnv := godotenv.Load()
+	// errEnv := godotenv.Load()
 
-	if errEnv != nil {
-		log.Fatalf("Error loading .env file")
-	}
+	// if errEnv != nil {
+	// 	log.Fatalf("Error loading .env file")
+	// }
 
 	// Create Cloudinary uploader
 	cld, err := cloudinary.NewFromParams(os.Getenv("CLOUD_NAME"), os.Getenv("CLOUD_API_KEY"), os.Getenv("CLOUD_API_SECRET"))
